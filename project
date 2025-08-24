@@ -1,0 +1,56 @@
+appointments = []
+
+def add_appointment():
+    print("\n--- Add Appointment ---")
+    name = input("Enter patient name: ").strip()
+    date = input("Enter appointment date (YYYY-MM-DD): ").strip()
+    time = input("Enter appointment time (HH:MM): ").strip()
+    appointments.append({"name": name, "date": date, "time": time})
+    print(f"Appointment added for {name} on {date} at {time}.")
+
+def show_appointments():
+    print("\n--- All Appointments ---")
+    if not appointments:
+        print("No appointments found.")
+        return
+    for i, appt in enumerate(appointments, start=1):
+        print(f"{i}. {appt['name']} - {appt['date']} at {appt['time']}")
+
+def delete_appointment():
+    print("\n--- Delete Appointment ---")
+    if not appointments:
+        print("No appointments to delete.")
+        return
+    show_appointments()
+    choice = input("Enter the number of the appointment to delete: ").strip()
+    if choice.isdigit():
+        choice = int(choice)
+        if 1 <= choice <= len(appointments):
+            removed = appointments.pop(choice - 1)
+            print(f"Deleted: {removed['name']} on {removed['date']} at {removed['time']}.")
+        else:
+            print("Invalid number.")
+    else:
+        print("Please enter a valid number.")
+
+def main():
+    while True:
+        print("\n=== Patient Appointment Management System ===")
+        print("1. Add appointment")
+        print("2. Show appointments")
+        print("3. Delete appointment")
+        print("4. Exit")
+        choice = input("Choose an option: ").strip()
+        if choice == "1":
+            add_appointment()
+        elif choice == "2":
+            show_appointments()
+        elif choice == "3":
+            delete_appointment()
+        elif choice == "4":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice, try again.")
+
+main()
