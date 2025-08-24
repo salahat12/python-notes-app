@@ -1,0 +1,30 @@
+# Task 2: Simple Username and Password Checker
+
+# 1) إدخال البيانات
+username = input("Enter username: ")
+password = input("Enter password: ")
+
+
+fixed_username = username.lower().replace(" ", "_")
+
+
+password_length = len(password)
+
+
+is_password_long = password_length >= 8
+is_admin = fixed_username == "admin"
+is_password_1234 = password == "1234"
+is_default_account = (is_admin and is_password_1234)
+
+
+print("\n=== Results ===")
+print(f"Fixed Username: {fixed_username}")
+print(f"Password Length: {password_length}")
+
+print("Password length >= 8:", is_password_long)
+print("Username == 'admin':", is_admin)
+print("Password == '1234':", is_password_1234)
+print("Default Account (admin & 1234):", is_default_account)
+
+
+print(f"\nWelcome, {fixed_username}! Your password length is {password_length}.")
