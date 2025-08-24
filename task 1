@@ -1,0 +1,15 @@
+# User Notes Program
+
+
+name = input("Enter your name: ")
+notes = input("Enter your notes: ")
+
+with open("notes.txt", "w", encoding="utf-8") as f:
+    f.write("Name: " + name + "\n")
+    f.write("Notes: " + notes + "\n")
+
+with open("notes.txt", "r", encoding="utf-8") as f:
+    content = f.read()
+    print("\n=== File Content ===")
+    print(content)
+
